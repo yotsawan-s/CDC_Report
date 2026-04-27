@@ -20,8 +20,8 @@ import yfinance as yf
 # ==============================================================================
 ASSETS = [
     ("BTC/USD",        "binance",  "BTCUSDT"),
-    ("BTC/THB",        "bitkub",   "thb_btc"),
-    ("DOGE/THB",       "bitkub",   "thb_doge"),
+    ("BTC/THB",        "bitkub",   "BTC_THB"),
+    ("DOGE/THB",       "bitkub",   "DOGE_THB"),
     ("XAU/USD (Gold)", "yfinance", "GC=F"),
     ("TSM",            "yfinance", "TSM"),
     ("AMD",            "yfinance", "AMD"),
@@ -43,8 +43,10 @@ HISTORY_DAYS = 14             # เก็บประวัติย้อนห
 # ดึงข้อมูล (เหมือนเดิม)
 # ==============================================================================
 def fetch_binance(symbol, days=LOOKBACK_DAYS):
+    # ใช้ data-api.binance.vision แทน api.binance.com
+    # เพราะ api.binance.com บล็อก IP จาก US (GitHub Actions runs on Microsoft US servers → 451 error)
     r = requests.get(
-        "https://api.binance.com/api/v3/klines",
+        "https://data-api.binance.vision/api/v3/klines",
         params={"symbol": symbol, "interval": "1d", "limit": days},
         timeout=30,
     )
