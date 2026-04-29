@@ -21,6 +21,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    # ระบุ Time Zone ใน environment variables
+    env:
+      TZ: Asia/Bangkok
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
