@@ -196,7 +196,7 @@ def build_html(all_results):
     # =========================
     # LOAD TEMPLATE
     # =========================
-    template_path = Path("CDC_Report/template.html")
+    template_path = Path("template.html")
     template = template_path.read_text(encoding="utf-8")
 
     # =========================
@@ -221,7 +221,8 @@ def build_html(all_results):
 def build_and_save(all_results):
     html = build_html(all_results)
 
-    output_path = Path("docs/index.html")
+    output_path = Path("docs/index.html") #code space
+    #output_path = Path("CDC_Report/docs/index.html") # local visual studio code
     output_path.write_text(html, encoding="utf-8")
 
     print(f"✅ HTML generated: {output_path.resolve()}")

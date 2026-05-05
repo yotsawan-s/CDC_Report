@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="3600">
+  <title>CDC ActionZone Daily Report</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Segoe UI", "Helvetica Neue", "Sukhumvit Set", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf3 100%);
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 16px;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; }
+
+    .header {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      margin-bottom: 16px;
+    }
+    .header h1 { font-size: 22px; color: #1a1a1a; margin-bottom: 4px; }
+    .header .subtitle { color: #888; font-size: 13px; }
+    .header .meta { color: #aaa; font-size: 12px; margin-top: 4px; }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .stat {
+      background: #fff;
+      padding: 16px 12px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .stat-num { font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 12px; color: #666; }
+    .stat.buy .stat-num { color: #16a34a; }
+    .stat.hold .stat-num { color: #ca8a04; }
+    .stat.sell .stat-num { color: #dc2626; }
+
+    .alert {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .alert-title { font-weight: 700; color: #78350f; margin-bottom: 4px; font-size: 15px; }
+    .alert-body { color: #78350f; font-size: 14px; }
+
+    .table-wrap {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: #f8fafc; }
+    th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th.right { text-align: right; }
+    th.center { text-align: center; }
+    td { padding: 14px 16px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+
+    .row-clickable { cursor: pointer; transition: background 0.12s; }
+    .row-clickable:hover { background: #f8fafc; }
+    .row-clickable.expanded { background: #f8fafc; }
+    .row-clickable.expanded .expand-icon { transform: rotate(90deg); }
+
+    .cell-name { font-weight: 600; }
+    .expand-icon {
+      display: inline-block;
+      color: #94a3b8;
+      font-size: 12px;
+      margin-right: 6px;
+      transition: transform 0.15s;
+    }
+    .cell-price { text-align: right; font-family: ui-monospace, monospace; font-size: 13px; }
+    .cell-signal { text-align: center; font-weight: 700; }
+    .cell-signal .emoji { font-size: 16px; margin-right: 4px; }
+    .cell-buy { background: #ecfdf5; color: #15803d; }
+    .cell-sell { background: #fef2f2; color: #b91c1c; }
+    .cell-hold { background: #fefce8; color: #a16207; }
+
+    .cell-asof {
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.3;
+      color: #475569;
+    }
+    .cell-asof .asof-date { font-weight: 600; }
+    .cell-asof .asof-ago { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+
+    .cell-asof.stale { background: #fff7ed; }
+    .cell-asof.stale .asof-date { color: #c2410c; }
+    .cell-asof.stale .asof-ago { color: #ea580c; font-weight: 600; }
+
+    .cell-sparkline { width: 100px; padding: 8px; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .badge-buy { background: #16a34a; color: #fff; }
+    .badge-sell { background: #dc2626; color: #fff; }
+
+    .row-detail td { padding: 0; background: #f8fafc; }
+    .detail-content { padding: 16px 20px; }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .detail-grid > div { display: flex; flex-direction: column; gap: 2px; }
+
+    .lbl { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+    .val { font-size: 14px; color: #334155; font-weight: 600; }
+    .val.mono { font-family: ui-monospace, monospace; }
+
+    .history-strip {
+      padding-top: 12px;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .history-label { font-size: 11px; color: #94a3b8; margin-bottom: 6px; }
+
+    .history-cells { display: flex; gap: 3px; flex-wrap: wrap; }
+
+    .hcell {
+      width: 22px; height: 22px;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; font-weight: 700; color: #fff;
+    }
+    .hcell-buy { background: #22c55e; }
+    .hcell-sell { background: #ef4444; }
+    .hcell-hold { background: #eab308; }
+
+    .row-error td { color: #94a3b8; font-style: italic; }
+
+    .footer {
+      margin-top: 16px;
+      padding: 16px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 11px;
+    }
+
+    @media (max-width: 640px) {
+      .cell-sparkline { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>📊 CDC ActionZone Daily Report</h1>
+      <div class="subtitle">Last updated: 2026-05-05 21:55</div>
+      <div class="meta">Timeframe: 1D · EMA(12/26)</div>
+    </div>
+
+    <div class="summary">
+      <div class="stat buy"><div class="stat-num">11</div><div class="stat-label">🟢 BUY</div></div>
+      <div class="stat hold"><div class="stat-num">1</div><div class="stat-label">🟡 HOLD</div></div>
+      <div class="stat sell"><div class="stat-num">1</div><div class="stat-label">🔴 SELL</div></div>
+    </div>
+
+    
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Asset</th>
+            <th class="right">Close</th>
+            <th class="center">As of</th>
+            <th class="center">Signal</th>
+            <th class="center">14D Trend</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr class="row-clickable" data-target="row-BTC_USD">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            BTC/USD
+          </td>
+          <td class="cell-price">81,381.40</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,15.7 8.6,15.4 15.2,18.9 21.8,18.1 28.5,13.7 35.1,19.2 41.7,23.6 48.3,26.0 54.9,23.6 61.5,15.5 68.2,13.5 74.8,14.1 81.4,8.5 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-BTC_USD" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">78,221.64</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">76,358.79</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-25: BUY">B</div><div class="hcell hcell-buy" title="2026-04-26: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-hold" title="2026-04-28: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-29: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-30: HOLD">H</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-02: BUY">B</div><div class="hcell hcell-buy" title="2026-05-03: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-BTC_THB">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            BTC/THB
+          </td>
+          <td class="cell-price">2,644,645.09</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,17.6 8.6,18.2 15.2,19.7 21.8,21.6 28.5,19.6 35.1,24.3 41.7,26.0 48.3,24.6 54.9,24.2 61.5,17.2 68.2,16.0 74.8,14.7 81.4,7.7 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-BTC_THB" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">2,533,678.76</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">2,467,311.06</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-25: BUY">B</div><div class="hcell hcell-buy" title="2026-04-26: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-02: BUY">B</div><div class="hcell hcell-buy" title="2026-05-03: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-DOGE_THB">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            DOGE/THB
+          </td>
+          <td class="cell-price">3.6513</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,26.0 8.6,25.4 15.2,24.0 21.8,24.0 28.5,23.2 35.1,24.3 41.7,20.8 48.3,16.2 54.9,10.8 61.5,7.7 68.2,7.6 74.8,8.3 81.4,4.7 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-DOGE_THB" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">3.4147</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">3.2716</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-25: BUY">B</div><div class="hcell hcell-buy" title="2026-04-26: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-02: BUY">B</div><div class="hcell hcell-buy" title="2026-05-03: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-KUB_THB">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            KUB/THB
+          </td>
+          <td class="cell-price">28.5000</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,7.9 8.6,13.6 15.2,12.2 21.8,7.5 28.5,2.0 35.1,12.6 41.7,26.0 48.3,9.3 54.9,11.8 61.5,12.2 68.2,13.4 74.8,9.7 81.4,12.8 88.0,12.2" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="12.2" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-KUB_THB" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">28.4284</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">28.2674</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-hold" title="2026-04-22: HOLD">H</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-25: BUY">B</div><div class="hcell hcell-buy" title="2026-04-26: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-hold" title="2026-04-28: HOLD">H</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-02: BUY">B</div><div class="hcell hcell-buy" title="2026-05-03: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-XAU_USD_Gold">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            XAU/USD (Gold)
+          </td>
+          <td class="cell-price">4,592.70</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-sell">
+            <span class="emoji">🔴</span>
+            <span class="sig-text">SELL</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,7.1 8.6,2.0 15.2,5.6 21.8,13.3 28.5,10.9 35.1,12.8 41.7,11.6 48.3,14.9 54.9,20.9 61.5,24.2 68.2,19.2 74.8,18.2 81.4,26.0 88.0,20.8" fill="none" stroke="#ef4444" stroke-width="1.5"/><circle cx="88.0" cy="20.8" r="2.5" fill="#ef4444"/></svg></td>
+        </tr>
+        <tr id="row-XAU_USD_Gold" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bearish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">4,636.78</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">4,689.06</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-hold" title="2026-04-16: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-17: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-20: HOLD">H</div><div class="hcell hcell-sell" title="2026-04-21: SELL">S</div><div class="hcell hcell-sell" title="2026-04-22: SELL">S</div><div class="hcell hcell-sell" title="2026-04-23: SELL">S</div><div class="hcell hcell-sell" title="2026-04-24: SELL">S</div><div class="hcell hcell-sell" title="2026-04-27: SELL">S</div><div class="hcell hcell-sell" title="2026-04-28: SELL">S</div><div class="hcell hcell-sell" title="2026-04-29: SELL">S</div><div class="hcell hcell-sell" title="2026-04-30: SELL">S</div><div class="hcell hcell-sell" title="2026-05-01: SELL">S</div><div class="hcell hcell-sell" title="2026-05-04: SELL">S</div><div class="hcell hcell-sell" title="2026-05-05: SELL">S</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-TSM">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            TSM
+          </td>
+          <td class="cell-price">395.5862</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,26.0 8.6,21.9 15.2,24.3 21.8,23.3 28.5,12.1 35.1,14.9 41.7,3.5 48.3,2.0 54.9,9.3 61.5,8.4 68.2,7.1 74.8,6.2 81.4,3.9 88.0,7.4" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="7.4" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-TSM" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">390.3168</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">377.7599</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-AMD">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            AMD
+          </td>
+          <td class="cell-price">352.0350</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,25.1 8.6,25.0 15.2,26.0 21.8,23.3 28.5,18.0 35.1,17.5 41.7,5.6 48.3,9.3 54.9,12.5 61.5,8.6 68.2,3.7 74.8,2.0 81.4,7.3 88.0,4.4" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="4.4" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-AMD" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">325.9752</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">291.8861</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-NVDA">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            NVDA
+          </td>
+          <td class="cell-price">197.0200</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-hold">
+            <span class="emoji">🟡</span>
+            <span class="sig-text">HOLD</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,24.4 8.6,20.3 15.2,19.8 21.8,22.5 28.5,19.3 35.1,22.8 41.7,12.2 48.3,2.0 54.9,6.2 61.5,11.0 68.2,22.9 74.8,24.2 81.4,24.2 88.0,26.0" fill="none" stroke="#eab308" stroke-width="1.5"/><circle cx="88.0" cy="26.0" r="2.5" fill="#eab308"/></svg></td>
+        </tr>
+        <tr id="row-NVDA" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">200.8315</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">196.1045</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-hold" title="2026-04-30: HOLD">H</div><div class="hcell hcell-hold" title="2026-05-01: HOLD">H</div><div class="hcell hcell-hold" title="2026-05-04: HOLD">H</div><div class="hcell hcell-hold" title="2026-05-05: HOLD">H</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-TSLA">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            TSLA
+          </td>
+          <td class="cell-price">393.2600</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,12.1 8.6,2.0 15.2,9.0 21.8,14.3 28.5,13.3 35.1,25.2 41.7,23.0 48.3,20.9 54.9,23.2 61.5,26.0 68.2,18.4 74.8,10.5 81.4,9.0 88.0,8.3" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="8.3" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-TSLA" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">383.4838</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">380.9644</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-hold" title="2026-04-16: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-17: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-20: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-21: HOLD">H</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-sell" title="2026-04-23: SELL">S</div><div class="hcell hcell-sell" title="2026-04-24: SELL">S</div><div class="hcell hcell-hold" title="2026-04-27: HOLD">H</div><div class="hcell hcell-sell" title="2026-04-28: SELL">S</div><div class="hcell hcell-sell" title="2026-04-29: SELL">S</div><div class="hcell hcell-hold" title="2026-04-30: HOLD">H</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-GOOGL">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            GOOGL
+          </td>
+          <td class="cell-price">387.9700</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,24.4 8.6,22.0 15.2,23.8 21.8,26.0 28.5,23.0 35.1,23.2 41.7,20.8 48.3,18.2 54.9,18.5 61.5,18.4 68.2,3.4 74.8,3.0 81.4,4.0 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-GOOGL" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">361.6334</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">342.6069</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-MU_Micron">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            MU (Micron)
+          </td>
+          <td class="cell-price">640.6000</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,24.9 8.6,25.2 15.2,26.0 21.8,25.9 28.5,21.1 35.1,21.8 41.7,20.0 48.3,16.5 54.9,19.0 61.5,17.3 68.2,17.4 74.8,14.3 81.4,10.0 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-MU_Micron" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">527.0643</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">482.1847</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-SNDK_Sandisk">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            SNDK (Sandisk)
+          </td>
+          <td class="cell-price">1,374.41</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,25.2 8.6,25.1 15.2,25.5 21.8,26.0 28.5,22.1 35.1,24.5 41.7,21.6 48.3,17.5 54.9,21.0 61.5,17.8 68.2,16.2 74.8,11.6 81.4,8.0 88.0,2.0" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="2.0" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-SNDK_Sandisk" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">1,099.70</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">966.9707</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-buy" title="2026-04-16: BUY">B</div><div class="hcell hcell-buy" title="2026-04-17: BUY">B</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="row-clickable" data-target="row-WD_Western_digital">
+          <td class="cell-name">
+            <span class="expand-icon">▸</span>
+            WD (Western digital)
+          </td>
+          <td class="cell-price">51.3600</td>
+          <td class="cell-asof ">
+            <div class="asof-date">05 May</div>
+            <div class="asof-ago">today</div>
+          </td>
+          <td class="cell-signal cell-buy">
+            <span class="emoji">🟢</span>
+            <span class="sig-text">BUY</span>
+            
+          </td>
+          <td class="cell-sparkline"><svg width="90" height="28"><polyline points="2.0,26.0 8.6,15.9 15.2,9.5 21.8,21.9 28.5,18.1 35.1,21.8 41.7,2.9 48.3,8.5 54.9,2.0 61.5,7.6 68.2,14.3 74.8,4.3 81.4,8.8 88.0,3.4" fill="none" stroke="#22c55e" stroke-width="1.5"/><circle cx="88.0" cy="3.4" r="2.5" fill="#22c55e"/></svg></td>
+        </tr>
+        <tr id="row-WD_Western_digital" class="row-detail" style="display:none;">
+          <td colspan="5">
+            <div class="detail-content">
+              <div class="detail-grid">
+                <div><span class="lbl">Trend</span><span class="val">Bullish</span></div>
+                <div><span class="lbl">EMA12</span><span class="val mono">50.4399</span></div>
+                <div><span class="lbl">EMA26</span><span class="val mono">49.5324</span></div>
+              </div>
+              <div class="history-strip">
+                <div class="history-label">14 วันย้อนหลัง:</div>
+                <div class="history-cells">
+                  <div class="hcell hcell-hold" title="2026-04-16: HOLD">H</div><div class="hcell hcell-hold" title="2026-04-17: HOLD">H</div><div class="hcell hcell-buy" title="2026-04-20: BUY">B</div><div class="hcell hcell-buy" title="2026-04-21: BUY">B</div><div class="hcell hcell-buy" title="2026-04-22: BUY">B</div><div class="hcell hcell-buy" title="2026-04-23: BUY">B</div><div class="hcell hcell-buy" title="2026-04-24: BUY">B</div><div class="hcell hcell-buy" title="2026-04-27: BUY">B</div><div class="hcell hcell-buy" title="2026-04-28: BUY">B</div><div class="hcell hcell-buy" title="2026-04-29: BUY">B</div><div class="hcell hcell-buy" title="2026-04-30: BUY">B</div><div class="hcell hcell-buy" title="2026-05-01: BUY">B</div><div class="hcell hcell-buy" title="2026-05-04: BUY">B</div><div class="hcell hcell-buy" title="2026-05-05: BUY">B</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      ⚠️ เพื่อการศึกษาเท่านั้น
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.row-clickable').forEach(row => {
+      row.addEventListener('click', () => {
+        const target = document.getElementById(row.dataset.target);
+        if (!target) return;
+        const isOpen = target.style.display !== 'none';
+        target.style.display = isOpen ? 'none' : 'table-row';
+        row.classList.toggle('expanded', !isOpen);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1916 @@
+{
+  "updated": "2026-05-05T14:55:56.996360+00:00",
+  "assets": [
+    {
+      "name": "BTC/USD",
+      "history": [
+        {
+          "date": "2026-04-22",
+          "close": 78178.23,
+          "fast_ma": 74941.51031320036,
+          "slow_ma": 73034.43839573413,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 78257.48,
+          "fast_ma": 75451.65949578492,
+          "slow_ma": 73421.3303664205,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 77437.13,
+          "fast_ma": 75757.11649643339,
+          "slow_ma": 73718.7970059449,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-25",
+          "close": 77625.0,
+          "fast_ma": 76044.4831892898,
+          "slow_ma": 74008.14537587491,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-26",
+          "close": 78657.55,
+          "fast_ma": 76446.4934678606,
+          "slow_ma": 74352.5457184027,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 77371.32,
+          "fast_ma": 76588.77447280512,
+          "slow_ma": 74576.15862815065,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 76342.77,
+          "fast_ma": 76550.9276308351,
+          "slow_ma": 74707.01872976912,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 75780.0,
+          "fast_ma": 76432.32337993738,
+          "slow_ma": 74786.49882386028,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 76346.57,
+          "fast_ma": 76419.1305522547,
+          "slow_ma": 74902.05965172248,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 78231.13,
+          "fast_ma": 76697.89969806168,
+          "slow_ma": 75148.65745529858,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-02",
+          "close": 78686.85,
+          "fast_ma": 77003.89205220604,
+          "slow_ma": 75410.74579194313,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-03",
+          "close": 78568.57,
+          "fast_ma": 77244.61173648202,
+          "slow_ma": 75644.65869624364,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 79861.01,
+          "fast_ma": 77647.13454625402,
+          "slow_ma": 75956.98101504041,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 81381.4,
+          "fast_ma": 78221.6369237534,
+          "slow_ma": 76358.78982874112,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "BTC/THB",
+      "history": [
+        {
+          "date": "2026-04-22",
+          "close": 2529997.48,
+          "fast_ma": 2407251.3677607113,
+          "slow_ma": 2349095.998694978,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 2525000.0,
+          "fast_ma": 2425366.5419513714,
+          "slow_ma": 2362125.924717572,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 2513858.01,
+          "fast_ma": 2438980.613958853,
+          "slow_ma": 2373365.338442196,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-25",
+          "close": 2500136.52,
+          "fast_ma": 2448389.2148882602,
+          "slow_ma": 2382755.7963353666,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-26",
+          "close": 2514889.0,
+          "fast_ma": 2458619.951059297,
+          "slow_ma": 2392543.441051265,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 2480070.15,
+          "fast_ma": 2461919.981665559,
+          "slow_ma": 2399026.9009733936,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 2467791.54,
+          "fast_ma": 2462823.2983323964,
+          "slow_ma": 2404120.5779383276,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 2477754.88,
+          "fast_ma": 2465120.464742797,
+          "slow_ma": 2409574.9706836366,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 2481188.97,
+          "fast_ma": 2467592.5424746745,
+          "slow_ma": 2414879.7113737375,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 2532605.01,
+          "fast_ma": 2477594.460555494,
+          "slow_ma": 2423600.103864572,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-02",
+          "close": 2541345.31,
+          "fast_ma": 2487402.2835469563,
+          "slow_ma": 2432321.970985715,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-03",
+          "close": 2551288.28,
+          "fast_ma": 2497230.898385886,
+          "slow_ma": 2441134.290171958,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 2603000.0,
+          "fast_ma": 2513503.0678649805,
+          "slow_ma": 2453124.342751813,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 2644645.09,
+          "fast_ma": 2533678.7635780605,
+          "slow_ma": 2467311.0647701975,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "DOGE/THB",
+      "history": [
+        {
+          "date": "2026-04-22",
+          "close": 3.118,
+          "fast_ma": 3.05599787338616,
+          "slow_ma": 3.0395739569278324,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 3.1319,
+          "fast_ma": 3.067675123634443,
+          "slow_ma": 3.0464129230813266,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 3.1634,
+          "fast_ma": 3.0824020276906823,
+          "slow_ma": 3.0550786324827097,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-25",
+          "close": 3.1632,
+          "fast_ma": 3.094832484969039,
+          "slow_ma": 3.0630876226691757,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-26",
+          "close": 3.1803,
+          "fast_ma": 3.1079813334353408,
+          "slow_ma": 3.0717700209899776,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 3.1559,
+          "fast_ma": 3.11535343598375,
+          "slow_ma": 3.0780018712870163,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 3.2343,
+          "fast_ma": 3.133652907370865,
+          "slow_ma": 3.089579510450941,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 3.3354,
+          "fast_ma": 3.164690921621501,
+          "slow_ma": 3.107788435602723,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 3.455,
+          "fast_ma": 3.2093538567566546,
+          "slow_ma": 3.1335078107432617,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 3.5249,
+          "fast_ma": 3.257899417255631,
+          "slow_ma": 3.1624998247622793,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-02",
+          "close": 3.5266,
+          "fast_ma": 3.2992379684470725,
+          "slow_ma": 3.1894702081132214,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-03",
+          "close": 3.5107,
+          "fast_ma": 3.3317705886859845,
+          "slow_ma": 3.213265007512242,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 3.5912,
+          "fast_ma": 3.3716828058112176,
+          "slow_ma": 3.241260192140965,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 3.6513,
+          "fast_ma": 3.414700835686415,
+          "slow_ma": 3.2716335112416344,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "KUB/THB",
+      "history": [
+        {
+          "date": "2026-04-22",
+          "close": 28.72,
+          "fast_ma": 27.84015446387285,
+          "slow_ma": 27.85362349173322,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 28.43,
+          "fast_ma": 27.930899930969332,
+          "slow_ma": 27.896318047901133,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 28.5,
+          "fast_ma": 28.018453787743283,
+          "slow_ma": 27.941035229538084,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-25",
+          "close": 28.74,
+          "fast_ma": 28.129460897321238,
+          "slow_ma": 28.000217805127853,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-26",
+          "close": 29.02,
+          "fast_ma": 28.26646691311797,
+          "slow_ma": 28.075757226970236,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 28.48,
+          "fast_ma": 28.299318157253666,
+          "slow_ma": 28.105701136083553,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 27.8,
+          "fast_ma": 28.22249997921464,
+          "slow_ma": 28.08305660748477,
+          "zone": "Orange",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe0",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 28.65,
+          "fast_ma": 28.288269213181618,
+          "slow_ma": 28.125052414337752,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 28.52,
+          "fast_ma": 28.32392010346137,
+          "slow_ma": 28.154307791053473,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 28.5,
+          "fast_ma": 28.351009318313466,
+          "slow_ma": 28.17991462134581,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-02",
+          "close": 28.44,
+          "fast_ma": 28.364700192419086,
+          "slow_ma": 28.199180204949823,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-03",
+          "close": 28.63,
+          "fast_ma": 28.405515547431534,
+          "slow_ma": 28.231092782360946,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 28.47,
+          "fast_ma": 28.415436232442065,
+          "slow_ma": 28.248789613297173,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 28.5,
+          "fast_ma": 28.428446042835596,
+          "slow_ma": 28.267397790089976,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "XAU/USD (Gold)",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 4785.39990234375,
+          "fast_ma": 4744.571869638656,
+          "slow_ma": 4764.0755323352305,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 4857.60009765625,
+          "fast_ma": 4761.960827795208,
+          "slow_ma": 4771.003277914565,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 4806.60009765625,
+          "fast_ma": 4768.82840777383,
+          "slow_ma": 4773.640079376913,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 4698.39990234375,
+          "fast_ma": 4757.993253092279,
+          "slow_ma": 4768.066732930011,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 4732.5,
+          "fast_ma": 4754.071214155005,
+          "slow_ma": 4765.432160120381,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 4705.10009765625,
+          "fast_ma": 4746.53719623212,
+          "slow_ma": 4760.963118456371,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 4722.2998046875,
+          "fast_ma": 4742.808366763717,
+          "slow_ma": 4758.099169288307,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 4675.39990234375,
+          "fast_ma": 4732.437833776029,
+          "slow_ma": 4751.973297662785,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 4591.5,
+          "fast_ma": 4710.7550901181785,
+          "slow_ma": 4740.086386724801,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 4545.2001953125,
+          "fast_ma": 4685.285106301921,
+          "slow_ma": 4725.650372546112,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 4614.7001953125,
+          "fast_ma": 4674.425889226625,
+          "slow_ma": 4717.431840899178,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 4629.89990234375,
+          "fast_ma": 4667.575737398491,
+          "slow_ma": 4710.947993598776,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 4519.5,
+          "fast_ma": 4644.7948547218,
+          "slow_ma": 4696.766660739607,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 4592.7001953125,
+          "fast_ma": 4636.780291735754,
+          "slow_ma": 4689.058033670932,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "TSM",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 363.3500061035156,
+          "fast_ma": 360.5378483397293,
+          "slow_ma": 353.5875061898891,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 370.5,
+          "fast_ma": 362.070487056694,
+          "slow_ma": 354.84028350915656,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 366.239990234375,
+          "fast_ma": 362.7119490840295,
+          "slow_ma": 355.6847062295431,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 368.0799865722656,
+          "fast_ma": 363.5378010052966,
+          "slow_ma": 356.6028751438189,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 387.44000244140625,
+          "fast_ma": 367.21506276469813,
+          "slow_ma": 358.88710679549206,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 382.6600036621094,
+          "fast_ma": 369.591207518146,
+          "slow_ma": 360.6480621189452,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 402.4599914550781,
+          "fast_ma": 374.64794350844323,
+          "slow_ma": 363.74524206976986,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 404.9800109863281,
+          "fast_ma": 379.3144154281178,
+          "slow_ma": 366.7996693969223,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 392.3399963378906,
+          "fast_ma": 381.31835095269827,
+          "slow_ma": 368.6915454666236,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 393.8299865722656,
+          "fast_ma": 383.24321797109326,
+          "slow_ma": 370.5536522151897,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 396.05999755859375,
+          "fast_ma": 385.2150302153241,
+          "slow_ma": 372.4430111295159,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 397.6700134277344,
+          "fast_ma": 387.1311814787718,
+          "slow_ma": 374.311677966421,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 401.6099853515625,
+          "fast_ma": 389.35868976689346,
+          "slow_ma": 376.3337748097648,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 395.5862121582031,
+          "fast_ma": 390.31677013478725,
+          "slow_ma": 377.7598812800195,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "AMD",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 278.260009765625,
+          "fast_ma": 241.01222431681592,
+          "slow_ma": 226.25003523761836,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 278.3900146484375,
+          "fast_ma": 246.76265359860386,
+          "slow_ma": 230.11225593471607,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 274.95001220703125,
+          "fast_ma": 251.09917030759271,
+          "slow_ma": 233.4335712141468,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 284.489990234375,
+          "fast_ma": 256.23621952709766,
+          "slow_ma": 237.21552817860814,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 303.4599914550781,
+          "fast_ma": 263.50141520832545,
+          "slow_ma": 242.12252545834664,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 305.3299865722656,
+          "fast_ma": 269.93658003354705,
+          "slow_ma": 246.80455961493325,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 347.80999755859375,
+          "fast_ma": 281.9171058066311,
+          "slow_ma": 254.28644390705625,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 334.6300048828125,
+          "fast_ma": 290.02678258758215,
+          "slow_ma": 260.2378187941493,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 323.2099914550781,
+          "fast_ma": 295.13189164412,
+          "slow_ma": 264.9024241764403,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 337.1099853515625,
+          "fast_ma": 301.59005990680345,
+          "slow_ma": 270.25113241163456,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 354.489990234375,
+          "fast_ma": 309.7285107264299,
+          "slow_ma": 276.49104780591165,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 360.5400085449219,
+          "fast_ma": 317.54566423696707,
+          "slow_ma": 282.71689674954206,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 341.5400085449219,
+          "fast_ma": 321.23710182280627,
+          "slow_ma": 287.07416428994054,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 352.0350036621094,
+          "fast_ma": 325.9752405673144,
+          "slow_ma": 291.8860783175086,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "NVDA",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 198.35000610351562,
+          "fast_ma": 187.75668655430778,
+          "slow_ma": 183.8560362478475,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 201.67999267578125,
+          "fast_ma": 189.89873364991908,
+          "slow_ma": 185.17632931658332,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 202.05999755859375,
+          "fast_ma": 191.76969732817673,
+          "slow_ma": 186.42697140858408,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 199.8800048828125,
+          "fast_ma": 193.01743695196686,
+          "slow_ma": 187.42349240667508,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 202.5,
+          "fast_ma": 194.4762928055104,
+          "slow_ma": 188.54027074692138,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 199.63999938964844,
+          "fast_ma": 195.2707092030701,
+          "slow_ma": 189.36247286860487,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 208.27000427246094,
+          "fast_ma": 197.27060075220717,
+          "slow_ma": 190.763030750372,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 216.61000061035156,
+          "fast_ma": 200.24589303807554,
+          "slow_ma": 192.6776211103705,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 213.1699981689453,
+          "fast_ma": 202.2342169043632,
+          "slow_ma": 194.19557496656122,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 209.25,
+          "fast_ma": 203.31356814984576,
+          "slow_ma": 195.31071756163075,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 199.57000732421875,
+          "fast_ma": 202.73763571513393,
+          "slow_ma": 195.62622050700764,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 198.4499969482422,
+          "fast_ma": 202.07799898176597,
+          "slow_ma": 195.83538913228426,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 198.47999572753906,
+          "fast_ma": 201.52446001957722,
+          "slow_ma": 196.03128591711797,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 197.02000427246094,
+          "fast_ma": 200.83146682771317,
+          "slow_ma": 196.10452431381003,
+          "zone": "Yellow",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udfe1",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "TSLA",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 388.8999938964844,
+          "fast_ma": 368.0202010585598,
+          "slow_ma": 374.30209075834523,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 400.6199951171875,
+          "fast_ma": 373.03555399065635,
+          "slow_ma": 376.25156515529653,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 392.5,
+          "fast_ma": 376.03008414594,
+          "slow_ma": 377.45515292157086,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 386.4200134277344,
+          "fast_ma": 377.6285348046776,
+          "slow_ma": 378.11921666276817,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 387.510009765625,
+          "fast_ma": 379.1487617217464,
+          "slow_ma": 378.8148309666835,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 373.7200012207031,
+          "fast_ma": 378.313567798509,
+          "slow_ma": 378.437436170685,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 376.29998779296875,
+          "fast_ma": 378.00378625919507,
+          "slow_ma": 378.2791066612245,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 378.6700134277344,
+          "fast_ma": 378.10628274666266,
+          "slow_ma": 378.308062718003,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 376.0199890136719,
+          "fast_ma": 377.78531448004867,
+          "slow_ma": 378.1385757769414,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 372.79998779296875,
+          "fast_ma": 377.01834114357484,
+          "slow_ma": 377.7431248151657,
+          "zone": "Red",
+          "signal": "SELL",
+          "color_emoji": "\ud83d\udd34",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 381.6300048828125,
+          "fast_ma": 377.72782787268835,
+          "slow_ma": 378.0310418572136,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 390.82000732421875,
+          "fast_ma": 379.74200932676996,
+          "slow_ma": 378.97837263254735,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 392.510009765625,
+          "fast_ma": 381.7063170865938,
+          "slow_ma": 379.98071612388645,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 393.260009765625,
+          "fast_ma": 383.48380826798325,
+          "slow_ma": 380.96436750475596,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "GOOGL",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 336.0199890136719,
+          "fast_ma": 318.1021276595986,
+          "slow_ma": 310.6574904242771,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 341.67999267578125,
+          "fast_ma": 321.72949150824206,
+          "slow_ma": 312.95545355401816,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 337.4200134277344,
+          "fast_ma": 324.1434179573947,
+          "slow_ma": 314.7676431742935,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 332.2900085449219,
+          "fast_ma": 325.3967395862451,
+          "slow_ma": 316.0655961647104,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 339.32000732421875,
+          "fast_ma": 327.5387807767026,
+          "slow_ma": 317.7881451394888,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 338.8900146484375,
+          "fast_ma": 329.2851244492772,
+          "slow_ma": 319.3512465845961,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 344.3999938964844,
+          "fast_ma": 331.6104889796168,
+          "slow_ma": 321.2067093484397,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 350.3399963378906,
+          "fast_ma": 334.4919516501205,
+          "slow_ma": 323.36473060691753,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 349.7799987792969,
+          "fast_ma": 336.84395890076297,
+          "slow_ma": 325.3214171382049,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 349.94000244140625,
+          "fast_ma": 338.8587348300927,
+          "slow_ma": 327.1450160495531,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 384.79998779296875,
+          "fast_ma": 345.9266199013044,
+          "slow_ma": 331.4157546972135,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 385.69000244140625,
+          "fast_ma": 352.04406336901235,
+          "slow_ma": 335.43606934493147,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 383.25,
+          "fast_ma": 356.8449766968566,
+          "slow_ma": 338.9778419860477,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 387.9700012207031,
+          "fast_ma": 361.63344200821757,
+          "slow_ma": 342.6068908182444,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "MU (Micron)",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 457.2300109863281,
+          "fast_ma": 421.80817052108443,
+          "slow_ma": 408.90171063231014,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 455.07000732421875,
+          "fast_ma": 426.9253761831051,
+          "slow_ma": 412.32158446134036,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 448.4200134277344,
+          "fast_ma": 430.2322434515096,
+          "slow_ma": 414.9955421625548,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 449.3800048828125,
+          "fast_ma": 433.1780529024793,
+          "slow_ma": 417.5425394010924,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 487.4800109863281,
+          "fast_ma": 441.53220029999454,
+          "slow_ma": 422.72309285185065,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 481.7200012207031,
+          "fast_ma": 447.71493890318044,
+          "slow_ma": 427.0932342125064,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 496.7200012207031,
+          "fast_ma": 455.2541792597224,
+          "slow_ma": 432.25077250940984,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 524.5599975585938,
+          "fast_ma": 465.91661284416415,
+          "slow_ma": 439.08849288342344,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 504.2900085449219,
+          "fast_ma": 471.82021218274224,
+          "slow_ma": 443.9182347842752,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 518.4600219726562,
+          "fast_ma": 478.99556753503674,
+          "slow_ma": 449.4398486500812,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 517.1599731445312,
+          "fast_ma": 484.86701455188205,
+          "slow_ma": 454.4561541681887,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 542.2100219726562,
+          "fast_ma": 493.6890156935396,
+          "slow_ma": 460.9564406722233,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 576.4500122070312,
+          "fast_ma": 506.42147669561524,
+          "slow_ma": 469.511520045172,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 640.5999755859375,
+          "fast_ma": 527.0643226787417,
+          "slow_ma": 482.1847389741176,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "SNDK (Sandisk)",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 919.469970703125,
+          "fast_ma": 828.9592915247906,
+          "slow_ma": 754.0394723223553,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 920.989990234375,
+          "fast_ma": 843.1178605570343,
+          "slow_ma": 766.4061773528753,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 913.02001953125,
+          "fast_ma": 853.8720388607599,
+          "slow_ma": 777.2664619586808,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 903.489990234375,
+          "fast_ma": 861.5055698413161,
+          "slow_ma": 786.6163529420655,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 979.0700073242188,
+          "fast_ma": 879.5924063771472,
+          "slow_ma": 800.8721791925955,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 932.4299926757812,
+          "fast_ma": 887.7212658077062,
+          "slow_ma": 810.6172024135722,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 989.9000244140625,
+          "fast_ma": 903.4410748240687,
+          "slow_ma": 823.8974114506456,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 1070.199951171875,
+          "fast_ma": 929.096286569885,
+          "slow_ma": 842.1420440225884,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 1002.3499755859375,
+          "fast_ma": 940.366084880047,
+          "slow_ma": 854.0092982124661,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 1064.2099609375,
+          "fast_ma": 959.4189888888859,
+          "slow_ma": 869.5797176735797,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 1096.510009765625,
+          "fast_ma": 980.509915177615,
+          "slow_ma": 886.3893689396572,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 1187.0,
+          "fast_ma": 1012.2776205349049,
+          "slow_ma": 908.6568230922751,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 1255.8599853515625,
+          "fast_ma": 1049.7518305066983,
+          "slow_ma": 934.3755758522223,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 1374.409423828125,
+          "fast_ma": 1099.6991525561486,
+          "slow_ma": 966.9706757022891,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    },
+    {
+      "name": "WD (Western digital)",
+      "history": [
+        {
+          "date": "2026-04-16",
+          "close": 49.27000045776367,
+          "fast_ma": 46.94419514304252,
+          "slow_ma": 47.374800011264554,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-17",
+          "close": 50.20000076293945,
+          "fast_ma": 47.44508831533436,
+          "slow_ma": 47.584074141018256,
+          "zone": "Blue",
+          "signal": "HOLD",
+          "color_emoji": "\ud83d\udd35",
+          "trend": "Bearish"
+        },
+        {
+          "date": "2026-04-20",
+          "close": 50.79999923706055,
+          "fast_ma": 47.96122845713839,
+          "slow_ma": 47.82229081479916,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-21",
+          "close": 49.650001525878906,
+          "fast_ma": 48.22103969848309,
+          "slow_ma": 47.95767679339766,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-22",
+          "close": 50.0,
+          "fast_ma": 48.49472589871646,
+          "slow_ma": 48.10895999388672,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-23",
+          "close": 49.65999984741211,
+          "fast_ma": 48.673998813900404,
+          "slow_ma": 48.223851834888606,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-24",
+          "close": 51.40999984741211,
+          "fast_ma": 49.09492204982528,
+          "slow_ma": 48.459862798779234,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-27",
+          "close": 50.88999938964844,
+          "fast_ma": 49.371087794413455,
+          "slow_ma": 48.6398729166214,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-28",
+          "close": 51.4900016784668,
+          "fast_ma": 49.697074545806274,
+          "slow_ma": 48.85099356564698,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-29",
+          "close": 50.970001220703125,
+          "fast_ma": 49.892909418867326,
+          "slow_ma": 49.00795709565114,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-04-30",
+          "close": 50.349998474121094,
+          "fast_ma": 49.96323081198329,
+          "slow_ma": 49.1073675681304,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-01",
+          "close": 51.279998779296875,
+          "fast_ma": 50.1658104992623,
+          "slow_ma": 49.26830321340199,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-04",
+          "close": 50.86000061035156,
+          "fast_ma": 50.272608977891416,
+          "slow_ma": 49.38620672428715,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish"
+        },
+        {
+          "date": "2026-05-05",
+          "close": 51.36000061035156,
+          "fast_ma": 50.4398999982699,
+          "slow_ma": 49.53241367881044,
+          "zone": "Green",
+          "signal": "BUY",
+          "color_emoji": "\ud83d\udfe2",
+          "trend": "Bullish",
+          "fresh_buy": false,
+          "fresh_sell": false
+        }
+      ]
+    }
+  ]
+}
