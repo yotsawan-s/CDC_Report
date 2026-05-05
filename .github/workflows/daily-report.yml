@@ -2,8 +2,8 @@ name: Daily CDC Report
 
 on:
   schedule:
-    # 7:00 ICT (UTC+7) = 00:00 UTC ทุกวัน
-    - cron: '0 0 * * *'
+    # 7:00 CST (UTC+8) = 23:00 UTC ทุกวัน
+    - cron: '0 23 * * *'
   workflow_dispatch:    # อนุญาตให้กด Run ด้วยมือเพื่อทดสอบ
 
 # สิทธิ์ที่ workflow ใช้
@@ -23,7 +23,7 @@ jobs:
 
     # ระบุ Time Zone ใน environment variables
     env:
-      TZ: Asia/Bangkok
+      TZ: Asia/Shanghai
 
     steps:
       - name: Checkout
