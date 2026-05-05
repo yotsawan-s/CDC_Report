@@ -22,6 +22,7 @@ ASSETS = [
     ("BTC/USD",        "binance",  "BTCUSDT"),
     ("BTC/THB",        "bitkub",   "BTC_THB"),
     ("DOGE/THB",       "bitkub",   "DOGE_THB"),
+    ("KUB/THB",       "bitkub",   "KUB_THB"),
     ("XAU/USD (Gold)", "yfinance", "GC=F"),
     ("TSM",            "yfinance", "TSM"),
     ("AMD",            "yfinance", "AMD"),
