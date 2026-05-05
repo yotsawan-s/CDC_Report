@@ -481,7 +481,7 @@ def build_html(all_results):
   <div class="wrap">
     <div class="header">
       <h1>📊 CDC ActionZone Daily Report</h1>
-      <div class="subtitle">Last updated: {date_str} ICT</div>
+      <div class="subtitle">Last updated: {date_str} </div>
       <div class="meta">Timeframe: 1D · EMA({FAST_EMA}/{SLOW_EMA}) · Logic by piriya33</div>
     </div>
 
