@@ -29,7 +29,9 @@ ASSETS = [
     ("NVDA",           "yfinance", "NVDA"),
     ("TSLA",           "yfinance", "TSLA"),
     ("GOOGL",          "yfinance", "GOOGL"),
-    ("Micron",          "yfinance", "MU"),
+    ("MU (Micron)",      "yfinance", "MU"),
+    ("SNDK (Sandisk)",      "yfinance", "SNDK"),
+    ("WD (Western digital)", "yfinance", "WD")
 ]
 
 FAST_EMA = 12
