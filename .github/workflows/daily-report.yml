@@ -2,10 +2,10 @@ name: Daily CDC Report
 
 on:
   schedule:
-    # 7:00 AM ICT (UTC+7) = 00:00 UTC ทุกวัน
-    - cron: '0 0 * * *'
-    # 12:00 PM ICT (UTC+7) = 05:00 UTC ทุกวัน
-    - cron: '0 5 * * *'
+    # 6:20 AM ICT (UTC+7) = 23:20 UTC วันก่อน ทุกวัน
+    - cron: '20 23 * * *'
+    # 11:20 AM ICT (UTC+7) = 04:20 UTC ทุกวัน
+    - cron: '20 4 * * *'
   workflow_dispatch:    # อนุญาตให้กด Run ด้วยมือเพื่อทดสอบ
 
 # สิทธิ์ที่ workflow ใช้
