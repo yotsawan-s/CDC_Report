@@ -1,0 +1,36 @@
+<div class="news-card">
+  <div class="news-card-head row-clickable" data-target="news-{{ n.id }}">
+    <span class="expand-icon">▸</span>
+    <div class="news-card-body">
+      <div class="news-card-title">{{ n.title_th }}</div>
+      <div class="news-card-summary">{{ n.summary_th }}</div>
+      <div class="news-card-meta">
+        <span class="news-source">{{ n.source }}</span>
+        {% if n.related_assets %}
+          {% for a in n.related_assets %}
+            <span class="news-asset-chip">{{ a }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div id="news-{{ n.id }}" class="news-card-detail" style="display:none;">
+    {% if n.key_points_th %}
+    <div class="news-section-block">
+      <div class="news-block-label">🎯 ประเด็นสำคัญ</div>
+      <ul class="news-key-points">
+        {% for kp in n.key_points_th %}
+        <li>{{ kp }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div class="news-section-block">
+      <div class="news-block-label">📊 บทวิเคราะห์</div>
+      <div class="news-analysis">{{ n.analysis_th }}</div>
+    </div>
+    <div class="news-original">
+      <a href="{{ n.url }}" target="_blank" rel="noopener">↗ อ่านบทความต้นฉบับ ({{ n.source }})</a>
+    </div>
+  </div>
+</div>

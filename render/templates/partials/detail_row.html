@@ -1,0 +1,40 @@
+{%- set last = r.history[-1] -%}
+{%- set sig = last.signal -%}
+{%- set css_sig = sig | lower -%}
+{%- set trend = last.trend -%}
+{%- set trend_icon = '📈' if trend == 'Bullish' else ('📉' if trend == 'Bearish' else '➡️') -%}
+{%- set trend_cls  = 'trend-bull' if trend == 'Bullish' else ('trend-bear' if trend == 'Bearish' else 'trend-side') -%}
+{%- set chart_id = asset_chart_id(r.name) -%}
+<tr id="row-{{ chart_id }}" class="row-detail" style="display:none;">
+  <td colspan="6">
+    <div class="detail-card">
+      <div class="detail-header-row">
+        <span class="detail-asset-name">{{ r.name }}</span>
+        <span class="sig-pill sig-pill-{{ css_sig }}"><span class="sig-dot"></span>{{ sig }}</span>
+      </div>
+      <div class="detail-divider"></div>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <div class="lbl">Trend</div>
+          <div class="val {{ trend_cls }}">{{ trend_icon }} {{ trend }}</div>
+        </div>
+        <div class="detail-item">
+          <div class="lbl">EMA{{ fast_ema }} (Fast)</div>
+          <div class="val mono">{{ format_price(last.fast_ma) }}</div>
+        </div>
+        <div class="detail-item">
+          <div class="lbl">EMA{{ slow_ema }} (Slow)</div>
+          <div class="val mono">{{ format_price(last.slow_ma) }}</div>
+        </div>
+      </div>
+      <div class="history-strip">
+        <div class="history-label">{{ history_days }} วันย้อนหลัง</div>
+        <div class="history-row">
+          <span class="hist-dir">← อดีต</span>
+          <div class="history-cells">{{ build_history_cells(r.history) | safe }}</div>
+          <span class="hist-dir">ปัจจุบัน →</span>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>

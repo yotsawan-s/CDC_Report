@@ -1,0 +1,22 @@
+{% if news['items'] or news.pending_count %}
+<div class="news-wrap">
+  <div class="news-head">
+    <div class="news-title">📰 ข่าววิเคราะห์ตลาด</div>
+    <div class="news-sub">วิเคราะห์โดย Claude จากแหล่งข่าวระดับโลก · อัพเดทอัตโนมัติ</div>
+  </div>
+
+  {% if news.pending_count %}
+  <div class="news-pending">
+    🔄 มีข่าว {{ news.pending_count }} ชิ้นกำลังประมวลผล จะแสดงในรอบถัดไป
+  </div>
+  {% endif %}
+
+  {% if news['items'] %}
+  <div class="news-list">
+    {% for n in news['items'] %}
+      {% include 'partials/news_card.html' %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endif %}

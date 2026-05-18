@@ -1,0 +1,24 @@
+{%- set last = r.history[-1] -%}
+{%- set sig = last.signal -%}
+{%- set css_sig = sig | lower -%}
+{%- set pct_str, pct_cls = pct_change(r.history) -%}
+{%- set date_short, ago, days_ago = format_date_short(last.date) -%}
+{%- set date_class = 'stale' if days_ago > 1 else '' -%}
+{%- set chart_id = asset_chart_id(r.name) -%}
+<tr class="row-clickable" data-target="row-{{ chart_id }}">
+  <td class="cell-name">
+    <span class="expand-icon">▸</span>{{ r.name }}
+  </td>
+  <td class="cell-price">{{ format_price(last.close) }}</td>
+  <td class="cell-pct {{ pct_cls }}">{{ pct_str }}</td>
+  <td class="cell-asof {{ date_class }}">
+    <div class="asof-date">{{ date_short }}</div>
+    <div class="asof-ago">{{ ago }}</div>
+  </td>
+  <td class="cell-signal">
+    <span class="sig-pill sig-pill-{{ css_sig }}"><span class="sig-dot"></span>{{ sig }}</span>
+    {% if last.fresh_buy %}<span class="badge badge-buy">NEW</span>
+    {%- elif last.fresh_sell %}<span class="badge badge-sell">NEW</span>{% endif %}
+  </td>
+  <td class="cell-sparkline">{{ build_sparkline(r.history) | safe }}</td>
+</tr>

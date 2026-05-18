@@ -28,6 +28,7 @@
 - **NEW badge** — โชว์เฉพาะวันที่เพิ่งเปลี่ยนสัญญาณ
 - **Sparkline** — กราฟเส้นเล็ก 14 วันข้างชื่อแต่ละสินทรัพย์
 - **คลิกแถวเพื่อดูรายละเอียด** — EMA12/26, ประวัติสัญญาณรายวัน 14 วัน
+- **📰 ข่าววิเคราะห์ตลาด** *(ทางเลือก)* — Claude สรุปข่าวจาก Reuters/CNBC/CoinDesk/MarketWatch เป็นภาษาไทย กดไอคอนเพื่ออ่านบทวิเคราะห์เต็ม + ประเด็นสำคัญ
 - **Mobile responsive** — เปิดบนมือถือก็สวย
 - **Auto refresh** — refresh ทุก 1 ชม.
 
@@ -42,36 +43,75 @@
 4. ทดสอบ Run workflow
 5. Bookmark URL ที่ได้
 
-## 🛠 ปรับแต่ง
+## 📁 โครงสร้างโปรเจกต์ (หลัง refactor)
+
+```
+CDC_Report/
+├── config.py              # 🎛️ ทุกค่าที่ปรับบ่อย — แก้ที่นี่ที่เดียว
+├── report.py              # 🎬 orchestrator (~90 บรรทัด)
+├── data/                  # 📥 fetch ราคาจาก binance / bitkub / yfinance
+├── signals/cdc.py         # 🧮 CDC ActionZone V3 logic
+├── news/                  # 📰 ข่าว — fetch + rank + Claude summarize + retry state
+│   ├── prompts/           #    prompt แปลไทย (text file — แก้ง่าย)
+│   ├── pipeline.py        #    main + resume
+│   ├── summarize.py       #    Claude API + rate-limit handling
+│   └── cache.py           #    docs/news.json state machine
+├── render/
+│   ├── builder.py         # 🎨 Jinja2 render + inline CSS/JS
+│   └── templates/
+│       ├── layout.html, styles.css, app.js
+│       └── partials/      # header, summary_cards, alert, news_*, signal_table, ...
+└── .github/workflows/
+    ├── daily-report.yml   # รันทุกเช้า — full pipeline
+    └── retry-news.yml     # รันทุก 30 นาที — resume news ที่ token deferred
+```
+
+**แก้จุดไหน กระทบจุดเดียว:**
+| อยากแก้ | ไปที่ |
+|---|---|
+| เพิ่ม/ลบเหรียญ, ค่า EMA, แหล่งข่าว | [`config.py`](config.py) |
+| Prompt ภาษาไทย | [`news/prompts/summarize_th.txt`](news/prompts/summarize_th.txt) |
+| สี/font/layout | [`render/templates/styles.css`](render/templates/styles.css) |
+| ข้อความ section ต่างๆ | [`render/templates/partials/`](render/templates/partials/) |
+| เวลา cron | [`.github/workflows/daily-report.yml`](.github/workflows/daily-report.yml) |
+
+## 🛠 ปรับแต่งบ่อยๆ
 
 ### เพิ่ม/ลบเหรียญ
 
-แก้ตัวแปร `ASSETS` ใน `report.py`:
+แก้ตัวแปร `ASSETS` ใน [`config.py`](config.py):
 
 ```python
 ASSETS = [
     ("ETH/USD", "binance", "ETHUSDT"),
-    ("ADA/THB", "bitkub", "thb_ada"),
+    ("ADA/THB", "bitkub", "ADA_THB"),
     ("AAPL", "yfinance", "AAPL"),
     # ...
 ]
 ```
 
+> ถ้าเปิดฟีเจอร์ข่าว อย่าลืมเพิ่ม alias ใน `NEWS_ASSET_ALIASES` ด้วย เพื่อให้กรองข่าวที่เกี่ยวข้องได้
+
 ### เปลี่ยนเวลา
 
 แก้ cron ใน `.github/workflows/daily-report.yml`:
-- `'0 0 * * *'` = 7:00 ICT (default)
+- `'20 23 * * *'` = 6:20 ICT (default)
 - `'30 22 * * *'` = 5:30 ICT
 - ใช้เครื่องช่วย: https://crontab.guru/
 
-> หมายเหตุ: GitHub Actions อาจ delay 5-15 นาที ในช่วงโหลดสูง
-
 ### เปลี่ยนค่า EMA
 
-แก้ที่หัว `report.py`:
+แก้ที่ `config.py`:
 ```python
 FAST_EMA = 12
 SLOW_EMA = 26
+```
+
+### ปิด/เปิดฟีเจอร์ข่าว
+
+แก้ `config.py`:
+```python
+NEWS_ENABLED = False   # ปิดข่าว ใช้แค่ BUY/SELL/HOLD
 ```
 
 ## 🆚 เปรียบเทียบกับเวอร์ชัน Email

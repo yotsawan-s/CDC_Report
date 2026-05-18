@@ -1,0 +1,83 @@
+name: Resume Pending News
+
+# ทำงานทุก 30 นาที — เช็คว่ามี news pending ที่รอบ token หมด deferred ไว้
+# ถ้า retry_after ผ่านไปแล้ว → เรียก Claude ใหม่ → commit + redeploy
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  resume:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Bangkok
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check for due-pending news
+        id: check
+        run: |
+          python -c "
+          from news.resume import has_due_pending
+          import sys
+          sys.exit(0 if has_due_pending() else 1)
+          " && echo "has_pending=true" >> $GITHUB_OUTPUT || echo "has_pending=false" >> $GITHUB_OUTPUT
+
+      - name: Resume pending news
+        if: steps.check.outputs.has_pending == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m news.resume
+
+      - name: Rebuild HTML (signals from cache + fresh news)
+        if: steps.check.outputs.has_pending == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python report.py --news-only
+
+      - name: Commit updated cache + HTML
+        if: steps.check.outputs.has_pending == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/news.json docs/index.html || true
+          git diff --staged --quiet || git commit -m "auto: resume pending news"
+          git push || true
+
+      - name: Setup Pages
+        if: steps.check.outputs.has_pending == 'true'
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        if: steps.check.outputs.has_pending == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        if: steps.check.outputs.has_pending == 'true'
+        uses: actions/deploy-pages@v4

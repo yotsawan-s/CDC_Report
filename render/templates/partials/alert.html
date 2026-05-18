@@ -1,0 +1,11 @@
+{% if fresh_signals %}
+<div class="alert">
+  <div class="alert-title">🚨 สัญญาณใหม่วันนี้</div>
+  <div class="alert-body">
+    {%- for name, sig in fresh_signals -%}
+      {%- if not loop.first %} · {% endif -%}
+      <strong>{{ name }}</strong> {{ sig }}
+    {%- endfor -%}
+  </div>
+</div>
+{% endif %}

@@ -105,6 +105,35 @@ setup ตั้งแต่เริ่ม จนได้ URL ของตั�
 
 ---
 
+## ขั้นที่ 6️⃣ *(ทางเลือก)* — เปิดฟีเจอร์ข่าววิเคราะห์ตลาด 📰
+
+ระบบจะดึงข่าวเชิงวิเคราะห์จาก Reuters / CNBC / CoinDesk / MarketWatch / The Conversation มาให้ **Claude สรุปเป็นภาษาไทยอัตโนมัติ** ทุกรอบเช้า — แต่ต้องมี Anthropic API key
+
+> ค่าใช้จ่ายโดยประมาณ ~$4/เดือน (5 ข่าว/วัน · Sonnet 4.6) — ถ้าไม่ตั้ง key ระบบจะข้าม section ข่าวไปเอง รายงาน BUY/SELL/HOLD ยังทำงานปกติ
+
+### 6.1 ขอ Anthropic API key
+
+1. ไป https://console.anthropic.com → Sign up / Sign in
+2. **Settings → API Keys → Create Key** → คัดลอกค่าที่ขึ้นต้น `sk-ant-...`
+3. **Billing → Plans & billing** → เติม credit ขั้นต่ำ $5
+
+### 6.2 ใส่ key ใน GitHub Secrets
+
+1. ในหน้า repo → **Settings → Secrets and variables → Actions**
+2. กด **New repository secret**
+3. กรอก:
+   - **Name:** `ANTHROPIC_API_KEY`
+   - **Secret:** วาง key ที่คัดลอกมา
+4. กด **Add secret**
+
+### 6.3 รัน workflow อีกครั้ง
+
+Actions → Daily CDC Report → Run workflow → รอ ~3 นาที → refresh เว็บ → จะเห็น section "📰 ข่าววิเคราะห์ตลาด" ขึ้นมาเหนือตารางสัญญาณ
+
+> 🔄 **Token หมดกลางคัน?** ระบบจะ defer ข่าวที่ยังไม่ได้ประมวลผลโดยอัตโนมัติ — workflow "Resume Pending News" จะรันทุก 30 นาทีและประมวลผลต่อให้เมื่อ token refresh
+
+---
+
 ## 🐛 Troubleshooting
 
 ### ❌ Action รันแล้วขึ้นกากบาทแดง
@@ -134,6 +163,13 @@ setup ตั้งแต่เริ่ม จนได้ URL ของตั�
 ### ❌ เปิดเว็บได้แต่บางเหรียญขึ้น "⚠️"
 
 → ปกติ — บางครั้ง API ของ exchange ตอบช้า รอบหน้า (พรุ่งนี้) จะกลับมา หรือกด Run workflow ด้วยมืออีกครั้ง
+
+### ❌ ตั้ง `ANTHROPIC_API_KEY` แล้วแต่ section ข่าวไม่ขึ้น
+
+- ตรวจว่า key ขึ้นต้นด้วย `sk-ant-`
+- ตรวจ Billing ว่ามี credit เหลือ
+- ดู log step **Generate report** จะมีบรรทัด `⚠️ ข้าม news section: ...` บอกสาเหตุ
+- ถ้าเห็น `🔄 deferred` แปลว่าโดน rate-limit — workflow `Resume Pending News` จะมาเก็บให้ภายใน 30 นาที
 
 ---
 
