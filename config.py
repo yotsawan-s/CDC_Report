@@ -23,6 +23,7 @@ ASSETS = [
     ("SNDK (Sandisk)",       "yfinance", "SNDK"),
     ("WD (Western digital)", "yfinance", "WD"),
     ("CCET (Thailand)",      "yfinance", "CCET.BK"),
+    ("QCOM (Qualcomm)",      "yfinance", "QCOM"),
 ]
 
 # ==============================================================================
@@ -69,6 +70,7 @@ NEWS_ASSET_ALIASES = {
     "SNDK":  ["sandisk"],
     "WD":    ["western digital"],
     "CCET":  ["ccet", "thailand", "charoen pokphand"],
+    "QCOM":  ["qualcomm", "qcom", "snapdragon"],
 }
 
 CLAUDE_MODEL = "claude-sonnet-4-6"
