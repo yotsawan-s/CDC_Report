@@ -22,6 +22,7 @@ ASSETS = [
     ("MU (Micron)",          "yfinance", "MU"),
     ("SNDK (Sandisk)",       "yfinance", "SNDK"),
     ("WD (Western digital)", "yfinance", "WD"),
+    ("CCET (Thailand)",      "yfinance", "CCET.BK"),
 ]
 
 # ==============================================================================
@@ -67,6 +68,7 @@ NEWS_ASSET_ALIASES = {
     "MU":    ["micron"],
     "SNDK":  ["sandisk"],
     "WD":    ["western digital"],
+    "CCET":  ["ccet", "thailand", "charoen pokphand"],
 }
 
 CLAUDE_MODEL = "claude-sonnet-4-6"
