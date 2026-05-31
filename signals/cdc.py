@@ -11,6 +11,17 @@ def ema(series, length):
     return series.ewm(span=length, adjust=False).mean()
 
 
+def rsi(series, period=14):
+    """Wilder's RSI."""
+    delta = series.diff()
+    gain = delta.clip(lower=0)
+    loss = (-delta).clip(lower=0)
+    avg_gain = gain.ewm(alpha=1 / period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1 / period, adjust=False).mean()
+    rs = avg_gain / avg_loss
+    return 100 - (100 / (1 + rs))
+
+
 def calculate_signals_history(df, n_history=HISTORY_DAYS):
     """Compute the CDC signal for the last n_history bars in df."""
     if len(df) < SLOW_EMA + 5:
@@ -19,6 +30,7 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
     x_price = ema(df["close"], SMOOTH)
     fast_ma = ema(x_price, FAST_EMA)
     slow_ma = ema(x_price, SLOW_EMA)
+    rsi_series = rsi(df["close"])
 
     history = []
     for i in range(max(0, len(df) - n_history), len(df)):
@@ -43,6 +55,7 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
         else:
             zone, signal, color = "Neutral", "HOLD", "⚪"
 
+        rsi_val = rsi_series.iloc[i]
         history.append({
             "date":        df["date"].iloc[i].strftime("%Y-%m-%d"),
             "close":       float(df["close"].iloc[i]),
@@ -52,6 +65,7 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
             "signal":      signal,
             "color_emoji": color,
             "trend":       "Bullish" if bull else "Bearish" if bear else "Sideways",
+            "rsi":         round(float(rsi_val), 2) if rsi_val == rsi_val else 50.0,
         })
 
     if len(history) >= 2:
@@ -63,4 +77,3 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
         history[-1]["fresh_sell"] = False
 
     return history
-    
