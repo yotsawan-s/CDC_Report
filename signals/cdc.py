@@ -63,3 +63,4 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
         history[-1]["fresh_sell"] = False
 
     return history
+    
