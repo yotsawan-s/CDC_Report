@@ -307,7 +307,7 @@ td {
 }
 .detail-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   border-top: 1px solid var(--border-soft);
   margin: 0 20px 16px;
   border-radius: 10px;
