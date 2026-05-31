@@ -32,6 +32,16 @@ def format_date_short(date_str):
         return date_str, "", 0
 
 
+def rsi_icon_and_class(rsi_val):
+    """Return (icon, css_class, label) for RSI value."""
+    if rsi_val <= 30:
+        return "🟢", "rsi-low", "Oversold"
+    elif rsi_val > 70:
+        return "🔴", "rsi-high", "Overbought"
+    else:
+        return "🟡", "rsi-mid", "Neutral"
+
+
 def build_sparkline(history):
     """SVG sparkline of the last N closes, coloured by latest signal."""
     if len(history) < 2:
