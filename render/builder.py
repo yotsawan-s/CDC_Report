@@ -26,6 +26,7 @@ _env = Environment(
 _env.globals.update(
     format_price=helpers.format_price,
     format_date_short=helpers.format_date_short,
+    rsi_icon_and_class=helpers.rsi_icon_and_class,
     build_sparkline=helpers.build_sparkline,
     build_history_cells=helpers.build_history_cells,
     asset_chart_id=helpers.asset_chart_id,
