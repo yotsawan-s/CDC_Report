@@ -5,6 +5,8 @@
 {%- set trend_icon = '📈' if trend == 'Bullish' else ('📉' if trend == 'Bearish' else '➡️') -%}
 {%- set trend_cls  = 'trend-bull' if trend == 'Bullish' else ('trend-bear' if trend == 'Bearish' else 'trend-side') -%}
 {%- set chart_id = asset_chart_id(r.name) -%}
+{%- set rsi_val = last.rsi -%}
+{%- set rsi_cls = 'rsi-low' if rsi_val <= 30 else ('rsi-high' if rsi_val > 70 else 'rsi-mid') -%}
 <tr id="row-{{ chart_id }}" class="row-detail" style="display:none;">
   <td colspan="6">
     <div class="detail-card">
@@ -25,6 +27,10 @@
         <div class="detail-item">
           <div class="lbl">EMA{{ slow_ema }} (Slow)</div>
           <div class="val mono">{{ format_price(last.slow_ma) }}</div>
+        </div>
+        <div class="detail-item">
+          <div class="lbl">RSI (14)</div>
+          <div class="val mono {{ rsi_cls }}">{{ rsi_val | round(1) }}</div>
         </div>
       </div>
       <div class="history-strip">
