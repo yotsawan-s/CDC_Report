@@ -323,6 +323,12 @@ td {
 .rsi-low  { color:var(--buy-dot);  }
 .rsi-mid  { color:var(--hold-dot); }
 .rsi-high { color:var(--sell-dot); }
+.rsi-label {
+  font-size: 10px;
+  margin-left: 6px;
+  opacity: 0.85;
+  font-weight: 500;
+}
 .lbl {
   font-size: 10px;
   color: var(--text-3);
