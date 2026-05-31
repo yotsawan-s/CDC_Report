@@ -320,6 +320,9 @@ td {
   background: var(--bg-detail);
 }
 .detail-item:last-child { border-right:none; }
+.rsi-low  { color:var(--buy-dot);  }
+.rsi-mid  { color:var(--hold-dot); }
+.rsi-high { color:var(--sell-dot); }
 .lbl {
   font-size: 10px;
   color: var(--text-3);
@@ -539,9 +542,7 @@ td {
   .cell-pct, th.col-pct { display:none; }
   .detail-grid { grid-template-columns:1fr 1fr; }
   .detail-item:nth-child(2) { border-right:none; }
-  .detail-item:nth-child(3) {
-    grid-column:1/-1;
-    border-top:1px solid var(--border-soft);
-    border-right:none;
-  }
+  .detail-item:nth-child(3),
+  .detail-item:nth-child(4) { border-top:1px solid var(--border-soft); }
+  .detail-item:nth-child(4) { border-right:none; }
 }
