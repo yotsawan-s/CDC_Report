@@ -22,6 +22,27 @@ def rsi(series, period=14):
     return 100 - (100 / (1 + rs))
 
 
+def _classify(price, fast, slow):
+    """Map one bar's price/EMA values to (zone, signal, color)."""
+    bull = fast > slow
+    bear = fast < slow
+
+    if bull and price > fast:
+        return "Green", "BUY", "🟢"
+    elif bear and price < fast:
+        return "Red", "SELL", "🔴"
+    elif bull and price < fast and price > slow:
+        return "Yellow", "HOLD", "🟡"
+    elif bull and price < fast and price < slow:
+        return "Orange", "HOLD", "🟠"
+    elif bear and price > fast and price > slow:
+        return "Blue", "HOLD", "🔵"
+    elif bear and price > fast and price < slow:
+        return "LightBlue", "HOLD", "🩵"
+    else:
+        return "Neutral", "HOLD", "⚪"
+
+
 def calculate_signals_history(df, n_history=HISTORY_DAYS):
     """Compute the CDC signal for the last n_history bars in df."""
     if len(df) < SLOW_EMA + 5:
@@ -40,20 +61,7 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
         bull  = fast > slow
         bear  = fast < slow
 
-        if bull and price > fast:
-            zone, signal, color = "Green", "BUY", "🟢"
-        elif bear and price < fast:
-            zone, signal, color = "Red", "SELL", "🔴"
-        elif bull and price < fast and price > slow:
-            zone, signal, color = "Yellow", "HOLD", "🟡"
-        elif bull and price < fast and price < slow:
-            zone, signal, color = "Orange", "HOLD", "🟠"
-        elif bear and price > fast and price > slow:
-            zone, signal, color = "Blue", "HOLD", "🔵"
-        elif bear and price > fast and price < slow:
-            zone, signal, color = "LightBlue", "HOLD", "🩵"
-        else:
-            zone, signal, color = "Neutral", "HOLD", "⚪"
+        zone, signal, color = _classify(price, fast, slow)
 
         rsi_val = rsi_series.iloc[i]
         history.append({
@@ -68,12 +76,29 @@ def calculate_signals_history(df, n_history=HISTORY_DAYS):
             "rsi":         round(float(rsi_val), 2) if rsi_val == rsi_val else 50.0,
         })
 
-    if len(history) >= 2:
-        latest, prev = history[-1], history[-2]
-        latest["fresh_buy"]  = latest["signal"] == "BUY"  and prev["signal"] != "BUY"
-        latest["fresh_sell"] = latest["signal"] == "SELL" and prev["signal"] != "SELL"
-    else:
-        history[-1]["fresh_buy"]  = False
-        history[-1]["fresh_sell"] = False
+    # "New" = the latest actionable signal (BUY/SELL) flips relative to the last
+    # remembered BUY/SELL — ignoring HOLD days in between. e.g. S,B,H,H,B → the
+    # final B is NOT new (last B/S was already B); only a real B↔S switch is New.
+    latest = history[-1]
+    latest["fresh_buy"]  = False
+    latest["fresh_sell"] = False
+
+    if latest["signal"] in ("BUY", "SELL"):
+        # Walk back over the FULL series (not just the n_history window) so that a
+        # long HOLD stretch can't make us forget the previous BUY/SELL.
+        prev_action = None
+        for j in range(len(df) - 2, -1, -1):
+            _, sig_j, _ = _classify(
+                float(x_price.iloc[j]), float(fast_ma.iloc[j]), float(slow_ma.iloc[j])
+            )
+            if sig_j in ("BUY", "SELL"):
+                prev_action = sig_j
+                break
+
+        if prev_action != latest["signal"]:
+            if latest["signal"] == "BUY":
+                latest["fresh_buy"] = True
+            else:
+                latest["fresh_sell"] = True
 
     return history
