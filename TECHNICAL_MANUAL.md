@@ -230,6 +230,8 @@ Pure logic ของ CDC ActionZone V3 (port จาก Pine Script ของ pir
 
 **Functions:**
 - `ema(series, length)` — exponential moving average
+- `rsi(series, period=14)` — Wilder's RSI (ใช้ EMA-style smoothing) → แสดงใน detail row
+- `_classify(price, fast, slow)` — helper map ค่า 1 แท่ง → `(zone, signal, color)` (ใช้ซ้ำทั้งตอน build history และตอนไล่ย้อนหา B/S ล่าสุด)
 - `calculate_signals_history(df, n_history)` — คำนวณสัญญาณ n_history แท่งล่าสุด
 
 **Output element:**
@@ -239,6 +241,7 @@ Pure logic ของ CDC ActionZone V3 (port จาก Pine Script ของ pir
   "fast_ma": 75000.0, "slow_ma": 73000.0,
   "zone": "Green", "signal": "BUY", "color_emoji": "🟢",
   "trend": "Bullish",
+  "rsi": 62.5,                               # ทุกแท่ง (NaN → fallback 50.0)
   "fresh_buy": False, "fresh_sell": False,  # last item only
 }
 ```
@@ -253,6 +256,11 @@ Pure logic ของ CDC ActionZone V3 (port จาก Pine Script ของ pir
 | `fast > slow AND price < slow` | Orange | HOLD |
 | `fast < slow AND price > fast` | Blue | HOLD |
 | `fast < slow AND fast < price < slow` | LightBlue | HOLD |
+
+**NEW logic** (`fresh_buy` / `fresh_sell` — ใส่เฉพาะแท่งล่าสุด):
+- เป็น `True` เฉพาะตอนสัญญาณ BUY/SELL **สลับจริง** เทียบกับ B/S ครั้งล่าสุด
+- ไล่ย้อนหลังบน**ข้อมูลเต็ม** (ไม่ใช่แค่ window 14 แท่ง) เพื่อ **ข้าม HOLD** — HOLD ที่คั่นยาวกี่วันก็ไม่ทำให้ลืม B/S ก่อนหน้า
+- ตัวอย่าง `S,B,H,H,B` → B ตัวท้าย **ไม่** ใช่ของใหม่ (B/S ล่าสุดก่อนหน้าก็คือ B); จะ NEW ก็ต่อเมื่อสลับ B↔S จริงเท่านั้น
 
 ---
 
@@ -331,6 +339,7 @@ Prompt แม่แบบ ใช้ Python `.format()` ใส่ `{assets}`, `{s
 | `build_history_cells(history)` | แถวสี่เหลี่ยมเล็กๆ B/S/H |
 | `asset_chart_id(name)` | DOM-safe id "XAU/USD (Gold)" → "XAU_USD_Gold" |
 | `pct_change(history)` | "↑ 2.34%", "pct-up" |
+| `rsi_icon_and_class(rsi_val)` | RSI → `(icon, css_class, label)`: ≤30 🟢 Oversold · >70 🔴 Overbought · กลาง 🟡 Neutral |
 
 #### `templates/layout.html`
 - โครงหลักเพียง 27 บรรทัด
@@ -364,7 +373,7 @@ CSS ทั้งหมด ~550 บรรทัด แบ่งเป็น:
 | `news_card.html` | `n.title_th`, `n.summary_th`, `n.key_points_th`, ... |
 | `signal_table.html` | `assets` (list) — loop เรียก signal_row + detail_row |
 | `signal_row.html` | `r` (single asset), helpers |
-| `detail_row.html` | `r`, `fast_ema`, `slow_ema`, `history_days` |
+| `detail_row.html` | `r`, `fast_ema`, `slow_ema`, `history_days` — แสดง EMA, RSI(14) + label, ประวัติ |
 | `footer.html` | `history_days` |
 
 > ⚠️ ระวัง Jinja: `news.items` ชนกับ `dict.items()` method → ใช้ `news['items']` ใน template
