@@ -24,6 +24,7 @@ ASSETS = [
     ("WD (Western digital)", "yfinance", "WD"),
     ("CCET (Thailand)",      "yfinance", "CCET.BK"),
     ("QCOM (Qualcomm)",      "yfinance", "QCOM"),
+    ("SPACEX",               "yfinance", "SPACEX"),
 ]
 
 # ==============================================================================
@@ -71,6 +72,7 @@ NEWS_ASSET_ALIASES = {
     "WD":    ["western digital"],
     "CCET":  ["ccet", "thailand", "charoen pokphand"],
     "QCOM":  ["qualcomm", "qcom", "snapdragon"],
+    "SPACEX": ["spacex", "space x", "elon musk", "rocket", "starship"],
 }
 
 CLAUDE_MODEL = "claude-sonnet-4-6"
