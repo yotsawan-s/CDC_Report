@@ -24,7 +24,7 @@ ASSETS = [
     ("WD (Western digital)", "yfinance", "WD"),
     ("CCET (Thailand)",      "yfinance", "CCET.BK"),
     ("QCOM (Qualcomm)",      "yfinance", "QCOM"),
-    ("SPACEX",               "yfinance", "SPACEX"),
+    ("SPACEX",               "yfinance", "SPCX"),
 ]
 
 # ==============================================================================
