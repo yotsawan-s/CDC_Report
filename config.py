@@ -25,6 +25,7 @@ ASSETS = [
     ("CCET (Thailand)",      "yfinance", "CCET.BK"),
     ("QCOM (Qualcomm)",      "yfinance", "QCOM"),
     ("SPACEX",               "yfinance", "SPCX"),
+    ("VT (Total World)",     "yfinance", "VT"),
 ]
 
 # ==============================================================================
@@ -73,6 +74,7 @@ NEWS_ASSET_ALIASES = {
     "CCET":  ["ccet", "thailand", "charoen pokphand"],
     "QCOM":  ["qualcomm", "qcom", "snapdragon"],
     "SPACEX": ["spacex", "space x", "elon musk", "rocket", "starship"],
+    "VT":    ["vanguard", "total world", "world stock market"],
 }
 
 CLAUDE_MODEL = "claude-sonnet-4-6"
